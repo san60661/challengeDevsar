@@ -22,7 +22,7 @@
                         <td>{{ reserva.cliente }}</td>
                         <td>{{ reserva.empleado }}</td>                        
                         <td>
-                            <a class="btn btn-danger btn-sm" href="{% url 'eliminar' reserva.id %}">Eliminar</a>
+                            <a class="btn btn-danger btn-sm" href="{% url 'eliminarReserva' reserva.id %}">Eliminar</a>
                             <a class="btn btn-primary btn-sm" href="{% url 'editarReserva' reserva.id %}">Editar</a>
                         </td>
                     </tr>

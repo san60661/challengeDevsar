@@ -73,9 +73,10 @@ def agregarReserva(request):
     return render(request, 'proyecto/agregarReserva.html', context)
 
 def eliminarReserva(request, reserva_id):
-    reserva = Cancha.objects.get(id=reserva_id)
+    reserva = Reserva.objects.get(id=reserva_id)
     reserva.delete()
-    return redirect('homeReserva')
+    return redirect('listaReserva')
+
 
 def editarReserva(request, reserva_id):
     reserva = Reserva.objects.get(id=reserva_id)
@@ -83,7 +84,7 @@ def editarReserva(request, reserva_id):
         form = ReservaForm(request.POST, instance=reserva)
         if form.is_valid():
             form.save()
-            return redirect('homeReserva')
+            return redirect('listaReserva')
     else:
         form = ReservaForm(instance=reserva)
 

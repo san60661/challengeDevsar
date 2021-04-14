@@ -1,0 +1,49 @@
+{% extends 'proyecto/layout.html' %}
+    {% block content %}
+        <div class="container text-center">
+            <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                <th scope="col">#Cancha</th>
+                <th scope="col">Tipo</th>
+                <th scope="col">Vestuario Disponible?</th>
+                <th scope="col">Iluminacion</th>
+                <th scope="col">Cesped Sintetico</th>
+                <th scope="col">Accion</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for cancha in canchas  %}
+                    <tr>
+                        <th scope="row"> Cancha #{{ cancha.id }}</th>
+                        <td>{{ cancha.tipo }}</td>
+                        
+                        {% if cancha.vestuarioDisponible %}
+                            <td>Si</td>
+                        {% else %}
+                            <td>No</td>
+                        {% endif %}
+
+                        {% if cancha.iluminacion %}
+                            <td>Si</td>
+                        {% else %}
+                            <td>No</td>
+                        {% endif %}
+
+                        {% if cancha.cespedSintetico %}
+                            <td>Si</td>
+                        {% else %}
+                            <td>No</td>
+                        {% endif %}
+        
+                        <td>
+                            <a class="btn btn-danger btn-sm" href="{% url 'eliminar' cancha.id %}">Eliminar</a>
+                            <a class="btn btn-primary btn-sm" href="{% url 'editar' cancha.id %}">Editar</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+            </table>
+        </div>
+
+    {% endblock %}

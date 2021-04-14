@@ -16,8 +16,8 @@
                 {% for cancha in canchas  %}
                     <tr>
                         <th scope="row"> Cancha #{{ cancha.id }}</th>
-                        <td>{{ cancha.tipo }}</td>
-                        
+                        <td>{{ cancha.cancha }}</td>
+
                         {% if cancha.vestuarioDisponible %}
                             <td>Si</td>
                         {% else %}

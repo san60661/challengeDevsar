@@ -1,4 +1,5 @@
 {% extends 'proyecto/layout.html' %}
+{% load humanize %}
     {% block content %}
         <div class="container text-center">
             <table class="table">
@@ -17,11 +18,9 @@
                     <tr>
                         <th scope="row"> Reserva #{{ reserva.id }}</th>
                         <td>{{ reserva.cancha }}</td>
-                        <td>{{ reserva.fecha_reserva }}</td>
+                        <td>{{ reserva.fecha_reserva | apnumber }}</td>
                         <td>{{ reserva.cliente }}</td>
-                        <td>{{ reserva.empleado }}</td>
-                        fecha_reserva
-                        
+                        <td>{{ reserva.empleado }}</td>                        
                         <td>
                             <a class="btn btn-danger btn-sm" href="{% url 'eliminar' reserva.id %}">Eliminar</a>
                             <a class="btn btn-primary btn-sm" href="{% url 'editarReserva' reserva.id %}">Editar</a>

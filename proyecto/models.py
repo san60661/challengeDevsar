@@ -23,6 +23,6 @@ class Reserva(models.Model):
     cancha = models.ForeignKey(Cancha, on_delete=models.CASCADE)
     cliente = models.CharField(max_length=50)
     empleado = models.CharField(max_length=50)
-    fecha_reserva = models.DateField(auto_now_add=False, auto_now=False, blank=True, null=True)
-    timestamp = models.DateField(auto_now_add=True, auto_now=False, blank=True)
+    fecha_reserva = models.DateTimeField(auto_now_add=False, auto_now=False, blank=True, null=True)
+    timestamp = models.DateTimeField(auto_now_add=True, auto_now=False, blank=True)
     #fechaR = models.DateField(auto_now_add=True, auto_now=False, blank=True)

@@ -4,6 +4,7 @@ from .forms import CanchaForm
 from .models import Reserva
 from .forms import ReservaForm
 from django.core.paginator import Paginator
+from django.http import Http404
 
 def home(request):
     canchas = Cancha.objects.all()
@@ -47,10 +48,16 @@ def editar(request, cancha_id):
 
 def listaReserva(request):
     reservas = Reserva.objects.all()
+    page = request.GET.get('page', 1)
+
+    try:
+        paginator =  Paginator(reservas, 20)
+        reservas = paginator.page(page)
+    except:
+        raise Http404
+
     context = {'reservas':reservas}
-    paginator = Paginator(reservas,3)
-    page = request.GET.get('page')
-    reservas = paginator.get_page(page)
+
     return render(request, 'proyecto/listaReserva.html', context)
 
 def agregarReserva(request):
